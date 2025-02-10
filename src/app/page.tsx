@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Test from "./test";
+import { Button } from "@/components/ui/button";
+import NavBar from "@/components/NavBar";
+import HeroSec from "@/components/MainPage-Components/HeroSec";
 
 export default function AddUserForm() {
   const [name, setName] = useState("");
@@ -26,33 +29,8 @@ export default function AddUserForm() {
 
   return (
     <div>
-      <h2>Dodaj użytkownika</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Imię"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Wiek"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="E-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <button type="submit">Dodaj</button>
-      </form>
-
-      <Test />
+      <NavBar />
+      <HeroSec />
     </div>
   );
 }
