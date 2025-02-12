@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   return (
-    <div className="px-16 py-8 flex items-center">
+    <div className="px-16 py-8 flex items-center shadow-xl">
       <h1 className="font-bold text-3xl pr-6 flex-1">GuguGaga</h1>
       
       <SearchBar />

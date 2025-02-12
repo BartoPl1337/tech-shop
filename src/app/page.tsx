@@ -1,10 +1,12 @@
 "use client"; // Potrzebne, bo używamy useState i useEffect
 
 import { useState } from "react";
-import Test from "./test";
-import { Button } from "@/components/ui/button";
 import NavBar from "@/components/NavBar";
 import HeroSec from "@/components/MainPage-Components/HeroSec";
+import Recommended from "@/components/MainPage-Components/Recommended";
+import Odwiedzane from "@/components/MainPage-Components/Odwiedzane";
+import Newsletter from "@/components/MainPage-Components/Newsletter";
+import Footer from "@/components/MainPage-Components/Footer";
 
 export default function AddUserForm() {
   const [name, setName] = useState("");
@@ -31,6 +33,10 @@ export default function AddUserForm() {
     <div>
       <NavBar />
       <HeroSec />
+      <Recommended />
+      {/* <Odwiedzane /> */}
+      <Newsletter />
+      <Footer />
     </div>
   );
 }

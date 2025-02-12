@@ -25,9 +25,6 @@ const fetchData = async () => {
   if (search === "") {
       return false;
     }
-    // const response = await fetch(`/api/products?name=${search}`);
-    // const result = await response.json();
-    // setData(result);
 
     const response = await axios.get(`/api/products?name=${search}`);
     setData(response.data);
