@@ -6,6 +6,15 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ShoppingBasket } from "lucide-react";
 import { useLocalStorage } from "usehooks-ts";
+import z from "zod";
+
+const productsSchema = z.object({
+  name: z.string(),
+  price: z.number(),
+  image: z.string(),
+});
+
+type Product = z.infer<typeof productsSchema>;
 
 const Odwiedzane = () => {
   const [produtcs, setProducts] = useState<
@@ -20,9 +29,7 @@ const Odwiedzane = () => {
       price: number;
     }[]
   >([]);
-  const [value, setValue, removeValue] = useLocalStorage<{
-    
-  }>(
+  const [value, setValue, removeValue] = useLocalStorage<Product[] | null>(
     "visitedProducts",
     null
   );
@@ -32,7 +39,8 @@ const Odwiedzane = () => {
     }
     const fetchData = async () => {
       const respone = await axios.get("/api/products");
-      setData(respone.data);
+      const parsedData = productsSchema.array().parse(respone.data);
+      setData(parsedData);
     };
     fetchData();
 
