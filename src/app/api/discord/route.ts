@@ -2,26 +2,18 @@ import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-    const { name, email, message } = await req.json();
+    const { email } = await req.json();
 
-    if (!name || !email || !message) {
+    if (!email) {
         return NextResponse.json({ message: "Nie wszystkie pola są wypełnione" });
     }
 
     await axios.post(process.env.DISCORD_WEBHOOK_URL as string, {
-        "username": "guguGaga",
-        "avatar_url": "discordBot.png",
-        "title": "Nowa wiadomość",
-        "description": new Date().toLocaleString(),
+        "username": "guguGaga Newsletter",
         "embeds": [
             {
                 "color": 15258703,
                 "fields": [
-                    {
-                        "name": "Imię",
-                        "value": name,
-                        "inline": true
-                    },
                     {
                         "name": "Email",
                         "value": email,
@@ -34,11 +26,11 @@ export async function POST(req: Request) {
                     },
                     {
                         "name": "Wiadomość",
-                        value: message
+                        "value": "Jakis frajer sie znowu nabrał na newslettera"
                     }
                 ],
             }
         ]
     })
-    return NextResponse.json({ message: "Wiadomość została wysłana" });
+return NextResponse.json({ message: "Wiadomość została wysłana" });
 }

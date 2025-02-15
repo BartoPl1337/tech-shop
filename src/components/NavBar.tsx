@@ -1,11 +1,12 @@
 import React from "react";
 import { Heart, Phone, ShoppingCart, User } from "lucide-react";
 import SearchBar from "./SearchBar";
+import Link from "next/link";
 
 const NavBar = () => {
   return (
     <div className="px-16 py-8 flex items-center shadow-xl">
-      <h1 className="font-bold text-3xl pr-6 flex-1">GuguGaga</h1>
+      <Link href='/' className="font-bold text-3xl pr-6 flex-1">GuguGaga</Link>
       
       <SearchBar />
 
