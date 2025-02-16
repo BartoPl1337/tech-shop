@@ -25,17 +25,17 @@ const HeroSec = () => {
           className="w-full"
         >
           <SwiperSlide>
-            <Link href="/">
+            <Link href="/products">
               <img src="swiper1.png" alt="" className="mx-auto w-full h-auto" />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Link href="/">
+            <Link href="/products">
               <img src="swiper2.png" alt="" className="mx-auto w-full h-auto" />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Link href="/">
+            <Link href="/products">
               <img src="swiper3.png" alt="" className="mx-auto w-full h-auto" />
             </Link>
           </SwiperSlide>

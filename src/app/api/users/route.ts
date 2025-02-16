@@ -1,6 +1,6 @@
-import { db } from "@/db";
+import { db } from "../../../../drizzle/db";
 import { NextResponse } from "next/server";
-import { usersTable } from "@/db/schema";
+import { usersTable } from "../../../../drizzle/schema";
 
 export async function POST(req: Request) {
   const { name, age, email } = await req.json();

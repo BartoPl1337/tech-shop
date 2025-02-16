@@ -1,5 +1,5 @@
-import { db } from "@/db";
-import { cpuTable, gpuTable, ramTable } from "@/db/schema";
+import { db } from "../../../../drizzle/db";
+import { cpuTable, gpuTable, ramTable } from "../../../../drizzle/schema";
 import { ilike  } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
