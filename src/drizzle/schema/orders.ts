@@ -21,5 +21,5 @@ export const orderRelations = relations(ordersTable, ({ one, many }) => ({
         fields: [ordersTable.userId],
         references: [userTable.id],
     }),
-    cartItems: many(orderItemTable),
+    orderItems: many(orderItemTable),
 }));

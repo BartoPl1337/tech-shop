@@ -32,5 +32,5 @@ export async function POST(req: Request) {
             }
         ]
     })
-return NextResponse.json({ message: "Wiadomość została wysłana" });
+    return NextResponse.json({ message: "Wiadomość została wysłana" });
 }

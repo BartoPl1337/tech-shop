@@ -21,15 +21,15 @@ export const orderItemRelationships = relations(orderItemTable, ({ one, many }) 
         references: [ordersTable.id],
     }),
     gpu: one(gpuTable, {
-        fields: [orderItemTable.orderId],
+        fields: [orderItemTable.productId],
         references: [gpuTable.id],
     }),
     ram: one(ramTable, {
-        fields: [orderItemTable.orderId],
+        fields: [orderItemTable.productId],
         references: [ramTable.id],
     }),
     cpu: one(cpuTable, {
-        fields: [orderItemTable.orderId],
+        fields: [orderItemTable.productId],
         references: [cpuTable.id],
     }),
 }));

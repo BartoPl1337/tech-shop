@@ -1,17 +1,16 @@
-import { db } from "../../../../drizzle/db";
+import { userTable } from "@/drizzle/schema";
+import { db } from "../../../drizzle/db";
 import { NextResponse } from "next/server";
-import { usersTable } from "../../../../drizzle/schema";
 
 export async function POST(req: Request) {
-  const { name, age, email } = await req.json();
+  const { name, email } = await req.json();
 
-  if (!name || !age || !email) {
+  if (!name || !email) {
     return NextResponse.json({ message: "Please fill all the fields" });
   }
 
-  await db.insert(usersTable).values({
+  await db.insert(userTable).values({
     name,
-    age: Number(age),
     email,
   })
 }
