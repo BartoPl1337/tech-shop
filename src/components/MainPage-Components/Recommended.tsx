@@ -9,7 +9,7 @@ const Recommended = () => {
       <div className="p-8">
         <div className="flex justify-between px-8 items-center">
           <h1 className="text-xl font-bold">Polecamy</h1>
-          <Link href='/' className="flex gap-2 items-center">
+          <Link href='/products' className="flex gap-2 items-center">
             <h4 className="text-sm font-semibold">Pokaż wszystkie</h4>
             <ChevronRight size={16} />
           </Link>

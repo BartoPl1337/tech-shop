@@ -29,20 +29,20 @@ const RecommendedMap = () => {
         .map((item, index) => (
           <SwiperSlide
             key={index}
-            className="relative border-2 aspect-square rounded-xl"
+            className="border-2 rounded-xl h-full flex flex-col relative"
           >
             <Link
-              href="/"
-              className="w-full flex flex-col rounded-xl p-4 h-full"
+              href="/products"
+              className="w-full h-full flex flex-col rounded-xl p-4"
             >
               <img
-                src="swiper2.png"
+                src={item.image}
                 alt="picture"
-                className="rounded-lg h-[220px] object-cover"
+                className="rounded-lg object-cover"
               />
-              <div className="grid content-between h-[150px]">
-                <h4 className="mt-2">{item.name}</h4>
-                <p>{item.price} zł</p>
+              <div className="flex flex-col justify-between flex-1 gap-12">
+                <h4 className="mt-2 line-clamp-2 font-medium">{item.name}</h4>
+                <p className="font-semibold">{item.price} zł</p>
                 <button className="rounded-full hover:bg-green-200 absolute p-2 bottom-2 right-3">
                   <ShoppingBasket />
                 </button>

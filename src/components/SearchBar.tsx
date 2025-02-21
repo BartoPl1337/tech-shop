@@ -16,21 +16,21 @@ const SearchBar = () => {
     }[]
   >([]);
 
-useEffect(() => {
-  setSearch(input); // Wykrywa zmiany w input i przypisuje je do search
-}, [input]);
+  useEffect(() => {
+    setSearch(input); // Wykrywa zmiany w input i przypisuje je do search
+  }, [input]);
 
-useEffect(() => {
-const fetchData = async () => {
-  if (search === "") {
-      return false;
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      if (search === "") {
+        return false;
+      }
 
-    const response = await axios.get(`/api/products?name=${search}`);
-    setData(response.data);
-  }
-  fetchData();
-}, [search]);
+      const response = await axios.get(`/api/products?name=${search}`);
+      setData(response.data);
+    };
+    fetchData();
+  }, [search]);
   return (
     <div className="flex-1 flex flex-col relative">
       <form action="" className="flex items-center relative">
@@ -47,15 +47,12 @@ const fetchData = async () => {
       </form>
 
       {search.length > 1 && (
-        <div className="flex flex-col absolute top-14 w-full px-4 z-10 space-y-1">
-          {data
-            .slice(0, 5)
-            .map((item, index) => (
-                <OpenedSearchBar 
-                key={index}
-                name = {item.name}
-                />
-            ))}
+        <div className="flex flex-col absolute top-12 w-full px-4 z-10 space-y-2 bg-slate-150 shadow-lg p-2 bg-slate-200/20 rounded-xl">
+          <h1 className="font-bold">Podobne wyszukiwania</h1>
+          {data.length === 0 && <p className="font-semibold">Brak wyników</p>}
+          {data.slice(0, 5).map((item, index) => (
+            <OpenedSearchBar key={index} name={item.name} />
+          ))}
         </div>
       )}
     </div>

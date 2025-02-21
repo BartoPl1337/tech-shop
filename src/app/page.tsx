@@ -1,4 +1,4 @@
-import Footer from "@/components/MainPage-Components/Footer";
+import Footer from "@/components/Footer";
 import HeroSec from "@/components/MainPage-Components/HeroSec";
 import Newsletter from "@/components/MainPage-Components/Newsletter";
 import Recommended from "@/components/MainPage-Components/Recommended";

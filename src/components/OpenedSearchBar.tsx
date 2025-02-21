@@ -6,7 +6,11 @@ type SearchBarProps = {
 };
 
 const OpenedSearchBar = ({ name }: SearchBarProps) => {
-  return <Link href="/" className="font-semibold">{name}</Link>;
+  return (
+    <Link href="/" className="font-semibold">
+      {name}
+    </Link>
+  );
 };
 
 export default OpenedSearchBar;

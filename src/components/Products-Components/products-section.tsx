@@ -1,30 +1,53 @@
 "use client";
 import axios from "axios";
+import { useAtom } from "jotai";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { selectedBrandsAtom } from "../../atoms/filterAtoms";
+
+type Product = {
+  name: string;
+  price: number;
+  image: string;
+  family: string;
+  id: string;
+};
 
 const products_section = () => {
-  const [data, setData] = useState<
-    {
-      name: string;
-      price: number;
-      image: string;
-    }[]
-  >([]);
+  const [selectedBrands] = useAtom(selectedBrandsAtom);
+  const [data, setData] = useState<Product[]>([]);
+  
   useEffect(() => {
     const fetchData = async () => {
-      const respone = await axios.get("/api/products");
+      const respone = await axios.get(`/api/products`);
       setData(respone.data);
     };
     fetchData();
   }, []);
+  const filteredData =
+    selectedBrands.length > 0
+      ? data.filter((item) => selectedBrands.includes(item.family))
+      : data;
   return (
-    <div>
-      {data.map((item) => (
-        <div key={item.name}>
-          <h1>{item.name}</h1>
-          <p>{item.price}</p>
-          <img src={item.image} alt="product" />
-        </div>
+    <div className="grid grid-cols-3 gap-8">
+      {filteredData.map((item) => (
+        <Link
+          href={`/products/${item.id}`}
+          key={item.id}
+          className="overflow-hidden rounded-xl border text-start ring-primary transition-all hover:shadow-sm hover:ring-2"
+        >
+          <div className="">
+            <img
+              src={item.image}
+              alt=""
+              className="object-cover object-center"
+            />
+          </div>
+          <div className="p-4 flex flex-col gap-4">
+            <h1 className="text-lg">{item.name}</h1>
+            <span>{item.price} zł</span>
+          </div>
+        </Link>
       ))}
     </div>
   );
