@@ -36,16 +36,16 @@ const products_section = () => {
           key={item.id}
           className="overflow-hidden rounded-xl border text-start ring-primary transition-all hover:shadow-sm hover:ring-2"
         >
-          <div className="">
+          <div className="flex justify-center">
             <img
               src={item.image}
               alt=""
               className="object-cover object-center"
             />
           </div>
-          <div className="p-4 flex flex-col gap-4">
-            <h1 className="text-lg">{item.name}</h1>
-            <span>{item.price} zł</span>
+          <div className="p-4 flex flex-col gap-6">
+            <h1 className=" font-semibold text-balance">{item.name}</h1>
+            <span className="font-semibold">{item.price} zł</span>
           </div>
         </Link>
       ))}

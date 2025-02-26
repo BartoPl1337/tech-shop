@@ -3,6 +3,7 @@ import { createdAt, id, name, updatedAt } from "../schemaHelper";
 import { relations } from "drizzle-orm";
 import { cartItemTable } from "./cartItems";
 import { ordersTable } from "./orders";
+import { productsTable } from "./product";
 
 export const userRoles = ["user", "admin"] as const;
 export type UserStatus = (typeof userRoles)[number];
@@ -21,4 +22,5 @@ export const userTable = pgTable("users", {
 export const userRelations = relations(userTable, ({ many }) => ({
     cart: many(cartItemTable),
     orders: many(ordersTable),
+    products: many(productsTable),
 }))

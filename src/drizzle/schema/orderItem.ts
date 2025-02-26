@@ -2,9 +2,7 @@ import { integer, pgTable, text, uuid } from "drizzle-orm/pg-core";
 import { id, price } from "../schemaHelper";
 import { ordersTable } from "./orders";
 import { relations } from "drizzle-orm";
-import { gpuTable } from "./gpu";
-import { ramTable } from "./ram";
-import { cpuTable } from "./cpu";
+import { productsTable } from "./product";
 
 export const orderItemTable = pgTable("order_items", {
     id,
@@ -15,21 +13,13 @@ export const orderItemTable = pgTable("order_items", {
     price,
 });
 
-export const orderItemRelationships = relations(orderItemTable, ({ one, many }) => ({
+export const orderItemRelationships = relations(orderItemTable, ({ one }) => ({
     orders: one(ordersTable, {
         fields: [orderItemTable.orderId],
         references: [ordersTable.id],
     }),
-    gpu: one(gpuTable, {
+    product: one(productsTable, {
         fields: [orderItemTable.productId],
-        references: [gpuTable.id],
-    }),
-    ram: one(ramTable, {
-        fields: [orderItemTable.productId],
-        references: [ramTable.id],
-    }),
-    cpu: one(cpuTable, {
-        fields: [orderItemTable.productId],
-        references: [cpuTable.id],
+        references: [productsTable.id],
     }),
 }));

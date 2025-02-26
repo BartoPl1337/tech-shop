@@ -12,6 +12,7 @@ const RecommendedMap = () => {
       name: string;
       price: number;
       image: string;
+      id: string;
     }[]
   >([]);
   useEffect(() => {
@@ -32,7 +33,7 @@ const RecommendedMap = () => {
             className="border-2 rounded-xl h-full flex flex-col relative"
           >
             <Link
-              href="/products"
+              href={`/products/${item.id}`}
               className="w-full h-full flex flex-col rounded-xl p-4"
             >
               <img
