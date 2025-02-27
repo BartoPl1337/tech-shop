@@ -1,5 +1,5 @@
-'use client'
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -8,20 +8,33 @@ import {
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { categories } from "../../data.js";
+// import { categories } from "../../data.js";
 import { Filter } from "lucide-react";
 import { useAtom } from "jotai";
 import { selectedBrandsAtom } from "../../atoms/filterAtoms";
+import axios from "axios";
 
 const navigation_section = () => {
   const [selectedBrands, setSelectedBrands] = useAtom(selectedBrandsAtom);
+  const [families, setFamilies] = useState<Record<string, string[]>>({});
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const respone = await axios.get("/api/families");
+      setFamilies(respone.data);
+    };
+    fetchData();
+  }, []);
   const handleCheckboxChange = (markName: string) => {
-    const updatedBrands = selectedBrands.includes(markName)
-      ? selectedBrands.filter((brand) => brand !== markName)
-      : [...selectedBrands, markName];
-
-    setSelectedBrands(updatedBrands);
+    // const updatedBrands = selectedBrands.includes(markName)
+    //   ? selectedBrands.filter((brand) => brand !== markName)
+    //   : [...selectedBrands, markName];
+    // setSelectedBrands(updatedBrands);
+    setSelectedBrands((prev) =>
+      prev.includes(markName)
+        ? prev.filter((brand) => brand !== markName)
+        : [...prev, markName]
+    );
   };
   return (
     <div className="space-y-8 w-72">
@@ -30,24 +43,21 @@ const navigation_section = () => {
         <Filter />
       </div>
       <Accordion type="multiple">
-        {categories.map((category) => (
+        {Object.entries(families).map(([type, brands]) => (
           <AccordionItem
-            value={category.value}
-            key={category.value}
+            value={type}
+            key={type}
             className="border-b border-gray-950"
           >
-            <AccordionTrigger className="text-lg">{category.catergory}</AccordionTrigger>
-            {category.mark.map((mark) => (
-              <AccordionContent
-                className="flex items-center gap-2"
-                key={mark.name}
-              >
+            <AccordionTrigger className="text-lg">{type}</AccordionTrigger>
+            {brands.map((brand) => (
+              <AccordionContent className="flex items-center gap-2" key={brand}>
                 <Checkbox
-                  id={mark.name}
-                  checked={selectedBrands.includes(mark.name)}
-                  onCheckedChange={() => handleCheckboxChange(mark.name)}
+                  id={brand}
+                  checked={selectedBrands.includes(brand)}
+                  onCheckedChange={() => handleCheckboxChange(brand)}
                 />
-                <Label htmlFor={mark.name}>{mark.name}</Label>
+                <Label htmlFor={brand}>{brand}</Label>
               </AccordionContent>
             ))}
           </AccordionItem>
