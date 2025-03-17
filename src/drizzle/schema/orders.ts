@@ -1,6 +1,6 @@
 import { pgEnum, pgTable, uuid } from "drizzle-orm/pg-core";
 import { createdAt, id,  updatedAt } from "../schemaHelper";
-import { userTable } from "./users";
+import { user } from "./user";
 import { relations } from "drizzle-orm";
 import { orderItemTable } from "./orderItem";
 
@@ -10,16 +10,16 @@ export const orderStatusEnum = pgEnum("order_status", orderStatuses);
 
 export const ordersTable = pgTable("orders", {
     id,
-    userId: uuid("user_id").references(() => userTable.id),
+    userId: uuid("user_id").references(() => user.id),
     status: 
     createdAt,
     updatedAt,
 });
 
 export const orderRelations = relations(ordersTable, ({ one, many }) => ({
-    users: one(userTable, {
+    users: one(user, {
         fields: [ordersTable.userId],
-        references: [userTable.id],
+        references: [user.id],
     }),
     orderItems: many(orderItemTable),
 }));
