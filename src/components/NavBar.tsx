@@ -17,6 +17,9 @@ const NavBar = () => {
       <div className="flex-1 flex justify-end">
         <ul className="flex gap-5">
           <li>
+            
+          </li>
+          <li>
             <Phone />
           </li>
           <li>

@@ -8,9 +8,9 @@ export const auth = betterAuth({
     provider: "pg", // or "mysql", "sqlite"
     schema,
   }),
-  advanced: {
-    generateId: false,
-  },
+  // advanced: {
+  //   generateId: false,
+  // },
   emailAndPassword: {
     enabled: true,
     autoSignIn: false, //defaults to true

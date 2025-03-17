@@ -1,4 +1,4 @@
-import { integer, pgTable, uuid } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uuid } from "drizzle-orm/pg-core";
 import { createdAt, id, updatedAt } from "../schemaHelper";
 import { user } from "./user";
 import { relations } from "drizzle-orm";
@@ -6,7 +6,7 @@ import { productsTable } from "./product";
 
 export const cartItemTable = pgTable("cart", {
     id,
-    userId: uuid("user_id").references(() => user.id, { onDelete: "cascade" }),
+    userId: text("user_id").references(() => user.id, { onDelete: "cascade" }),
     productId: uuid("product_id").notNull(),
     quantity: integer().notNull().default(1),
     createdAt,

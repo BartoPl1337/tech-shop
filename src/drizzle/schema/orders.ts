@@ -1,4 +1,4 @@
-import { pgEnum, pgTable, uuid } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, text } from "drizzle-orm/pg-core";
 import { createdAt, id,  updatedAt } from "../schemaHelper";
 import { user } from "./user";
 import { relations } from "drizzle-orm";
@@ -10,7 +10,7 @@ export const orderStatusEnum = pgEnum("order_status", orderStatuses);
 
 export const ordersTable = pgTable("orders", {
     id,
-    userId: uuid("user_id").references(() => user.id),
+    userId: text("user_id").references(() => user.id),
     status: 
     createdAt,
     updatedAt,

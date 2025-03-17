@@ -1,5 +1,5 @@
 import { boolean, pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
-import { createdAt, id, name, updatedAt } from "../schemaHelper";
+import { createdAt, name, updatedAt } from "../schemaHelper";
 import { relations } from "drizzle-orm";
 import { cartItemTable } from "./cartItems";
 import { ordersTable } from "./orders";
@@ -10,19 +10,19 @@ export type UserStatus = (typeof userRoles)[number];
 export const userStatusEnum = pgEnum("user_status", userRoles);
 
 export const user = pgTable("user", {
-    id,
-    name,
-    email: text().notNull().unique(),
-    createdAt,
-    role: userStatusEnum().notNull().default("user"),
-    emailVerified: boolean().notNull(),
-    image: text(),
-    updatedAt,
-    deletedAt: timestamp({ withTimezone: true }),
+  id: text("id").primaryKey(),
+  name,
+  email: text().notNull().unique(),
+  role: userStatusEnum().notNull().default("user"),
+  emailVerified: boolean().notNull(),
+  image: text(),
+  createdAt,
+  updatedAt,
+  deletedAt: timestamp({ withTimezone: true }),
 });
 
 export const userRelations = relations(user, ({ many }) => ({
-    cart: many(cartItemTable),
-    orders: many(ordersTable),
-    products: many(productsTable),
-}))
+  cart: many(cartItemTable),
+  orders: many(ordersTable),
+//   products: many(productsTable),
+}));
