@@ -2,6 +2,7 @@ import React from "react";
 import { Heart, Phone, ShoppingCart, User } from "lucide-react";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
+import Name from "./Name";
 
 const NavBar = () => {
   return (
@@ -15,9 +16,9 @@ const NavBar = () => {
       <SearchBar />
 
       <div className="flex-1 flex justify-end">
-        <ul className="flex gap-5">
+        <ul className="flex gap-5 items-center">
           <li>
-            
+            <Name />
           </li>
           <li>
             <Phone />
