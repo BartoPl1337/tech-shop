@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
-import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Heart } from "lucide-react";
 import {
@@ -10,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import CarouselSection from "@/components/Products-Components/carousel-section";
+import AddButton from "@/components/Add-button";
 
 type Props = {
   params: {
@@ -35,7 +35,7 @@ const fetchData = async (productId: string) => {
 };
 
 const page = async ({ params }: Props) => {
-  const { productId } = params;
+  const productId  = params.productId;
   const Product = await fetchData(productId);
   if (!Product) {
     return <div>Product not found</div>;
@@ -55,7 +55,7 @@ const page = async ({ params }: Props) => {
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl font-bold">{Product.price}</h1>
             <div className="flex gap-2">
-              <Button>Dodaj do koszyka</Button>
+                <AddButton productId={productId}/>
               <button>
                 <Heart size={28} />
               </button>

@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-// import { categories } from "../../data.js";
 import { Filter } from "lucide-react";
 import { useAtom } from "jotai";
 import { selectedBrandsAtom } from "../../atoms/filterAtoms";
@@ -26,10 +25,6 @@ const navigation_section = () => {
     fetchData();
   }, []);
   const handleCheckboxChange = (markName: string) => {
-    // const updatedBrands = selectedBrands.includes(markName)
-    //   ? selectedBrands.filter((brand) => brand !== markName)
-    //   : [...selectedBrands, markName];
-    // setSelectedBrands(updatedBrands);
     setSelectedBrands((prev) =>
       prev.includes(markName)
         ? prev.filter((brand) => brand !== markName)

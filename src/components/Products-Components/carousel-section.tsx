@@ -27,7 +27,6 @@ const fetchData = async (productId: string) => {
 const CarouselSection = async ({ params }: Props) => {
   const { productId } = params;
   const Product = await fetchData(productId);
-  console.log(Product);
   return (
     <Carousel className="w-full max-w-md">
       <CarouselContent>

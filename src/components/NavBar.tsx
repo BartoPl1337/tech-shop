@@ -1,8 +1,7 @@
 import React from "react";
-import { Heart, Phone, ShoppingCart, User } from "lucide-react";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
-import Name from "./Name";
+import NavBarIcons from "./navBar-icons";
 
 const NavBar = () => {
   return (
@@ -12,29 +11,8 @@ const NavBar = () => {
           GuguGaga
         </Link>
       </div>
-
       <SearchBar />
-
-      <div className="flex-1 flex justify-end">
-        <ul className="flex gap-5 items-center">
-          <li>
-            <Name />
-          </li>
-          <li>
-            <Phone />
-          </li>
-          <li>
-            <Heart />
-          </li>
-          <li>
-            <User />
-          </li>
-          <li className="flex items-center gap-2">
-            <ShoppingCart />
-            <span>0.00 zł</span>
-          </li>
-        </ul>
-      </div>
+      <NavBarIcons />
     </div>
   );
 };
