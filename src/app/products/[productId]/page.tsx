@@ -35,7 +35,7 @@ const fetchData = async (productId: string) => {
 };
 
 const page = async ({ params }: Props) => {
-  const productId  = params.productId;
+  const productId = params.productId;
   const Product = await fetchData(productId);
   if (!Product) {
     return <div>Product not found</div>;
@@ -54,12 +54,7 @@ const page = async ({ params }: Props) => {
           <p className="text-balance font-semibold">{Product.description}</p>
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl font-bold">{Product.price}</h1>
-            <div className="flex gap-2">
-                <AddButton productId={productId}/>
-              <button>
-                <Heart size={28} />
-              </button>
-            </div>
+            <AddButton productId={productId} />
           </div>
           <Accordion type="single" collapsible className="sm:max-w-[300px]">
             <AccordionItem value="item-1">
