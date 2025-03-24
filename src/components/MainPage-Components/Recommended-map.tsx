@@ -33,7 +33,7 @@ const RecommendedMap = () => {
             className="border-2 rounded-xl h-full flex flex-col relative"
           >
             <Link
-              href={`/products/${item.id}`}
+              href={`/produkty/${item.id}`}
               className="w-full h-full flex flex-col rounded-xl p-4"
             >
               <img

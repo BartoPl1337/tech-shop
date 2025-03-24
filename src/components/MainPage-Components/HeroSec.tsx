@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
+import Image from "next/image";
 
 const HeroSec = () => {
   return (
@@ -25,18 +26,33 @@ const HeroSec = () => {
           className="w-full"
         >
           <SwiperSlide>
-            <Link href="/products">
-              <img src="swiper1.png" alt="" className="mx-auto w-full h-auto" />
+            <Link href="/produkty">
+              <Image
+                width={1400}
+                height={0}
+                alt={"swiper"}
+                src={"/swiper1.png"}
+              />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Link href="/products">
-              <img src="swiper2.png" alt="" className="mx-auto w-full h-auto" />
+            <Link href="/produkty">
+              <Image
+                width={1400}
+                height={0}
+                alt={"swiper"}
+                src={"/swiper2.png"}
+              />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Link href="/products">
-              <img src="swiper3.png" alt="" className="mx-auto w-full h-auto" />
+            <Link href="/produkty">
+              <Image
+                width={1400}
+                height={0}
+                alt={"swiper"}
+                src={"/swiper3.png"}
+              />
             </Link>
           </SwiperSlide>
         </Swiper>

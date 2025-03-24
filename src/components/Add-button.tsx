@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "./ui/input";
+import { refetchStore } from "./refetch-store";
 
 const FormSchema = z.object({
   quantity: z.number().min(1).max(100),
@@ -30,9 +31,7 @@ const AddButton = ({ productId }: { productId: string }) => {
   const session = authClient.useSession();
   const user = session.data?.user;
 
-  if (!user) {
-    return <h1>Zaloguj się</h1>;
-  }
+  const { refetch } = refetchStore();
 
   const handleAddToCart = async (data: z.infer<typeof FormSchema>) => {
     const response = await axios.post("/api/cart", {
@@ -40,6 +39,7 @@ const AddButton = ({ productId }: { productId: string }) => {
       quantity: data.quantity,
       userId: user?.id,
     });
+    refetch();
   };
 
   return (

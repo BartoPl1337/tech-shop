@@ -32,7 +32,7 @@ const products_section = () => {
     <div className="grid grid-cols-3 gap-8">
       {filteredData.map((item) => (
         <Link
-          href={`/products/${item.id}`}
+          href={`/produkty/${item.id}`}
           key={item.id}
           className="overflow-hidden rounded-xl border text-start ring-primary transition-all hover:shadow-sm hover:ring-2"
         >

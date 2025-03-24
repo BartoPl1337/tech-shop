@@ -1,7 +1,6 @@
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import axios from "axios";
-import { Heart } from "lucide-react";
 import {
   Accordion,
   AccordionContent,

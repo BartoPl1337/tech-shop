@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
+import Image from "next/image";
 
 type Inputs = {
   email: string;
@@ -44,7 +45,12 @@ const Newsletter = () => {
         </div>
       </div>
       <div className="flex-1 flex justify-center">
-        <img src="newsletter.svg" alt="" className="h-[200px]" />
+        <Image
+        height={200}
+        width={250}
+        alt={"newsletter"}
+        src={"/newsletter.svg"}
+        />
       </div>
     </div>
   );
