@@ -1,10 +1,11 @@
 import { auth } from "@/lib/auth";
-import { Heart, LogOut, Phone, ShoppingCart, User } from "lucide-react";
+import { Heart, LogOut, User } from "lucide-react";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import CartPopUp from "./cart-popUp";
+import { ModeToggle } from "./modeToggle";
 
 export default async function NavBarIcons() {
   const session = await auth.api.getSession({
@@ -23,7 +24,7 @@ export default async function NavBarIcons() {
           </li>
         ) : null}
         <li>
-          <Phone />
+          <ModeToggle />
         </li>
         <li>
           <Heart />

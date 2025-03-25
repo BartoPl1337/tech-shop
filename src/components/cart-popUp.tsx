@@ -37,13 +37,8 @@ const CartPopUp = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (!user) return;
-      const token = session.data?.session.token;
 
-      const response = await axios.get<CartItem[]>("/api/cart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get<CartItem[]>("/api/cart");
       setCartItems(response.data);
     };
     fetchData();
@@ -98,7 +93,7 @@ const CartPopUp = () => {
         <SheetClose asChild>
           <div className="flex items-center justify-between mt-6">
             <p className="font-semibold text-lg text-black ">Suma: {sum.toFixed(2)} PLN</p>
-            <Link href="/">
+            <Link href="/koszyk">
               <Button type="submit">Kup teraz</Button>
             </Link>
           </div>
