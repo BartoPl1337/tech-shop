@@ -23,6 +23,7 @@ import { Input } from "../ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import Link from "next/link";
 
 interface CartItem {
   id: string;
@@ -107,11 +108,17 @@ const SubmitOrderSection = () => {
         </div>
 
         <div className="flex flex-col gap-1">
-          <Button className="bg-green-500 hover:bg-green-700">Przejdz do dostawy</Button>
+          <Link href="/dostawa">
+            <Button className="bg-green-500 hover:bg-green-700 w-full">
+              Przejdz do dostawy
+            </Button>
+          </Link>
           <Button variant={"outline"}>Oblicz ratę</Button>
         </div>
 
-        <span className="text-xs font-semibold text-center">Nie zwlekaj, produkty w koszyku nie są rezerwowane.</span>
+        <span className="text-xs font-semibold text-center">
+          Nie zwlekaj, produkty w koszyku nie są rezerwowane.
+        </span>
       </div>
     </div>
   );

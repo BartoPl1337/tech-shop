@@ -1,6 +1,6 @@
 import { db } from "@/drizzle/db";
 import { cartItemTable, productsTable, session } from "@/drizzle/schema";
-import { auth, getServerSession } from "@/lib/auth";
+import { getServerSession } from "@/lib/auth";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   if (existingItem.length > 0) {
     await db
       .update(cartItemTable)
-      .set({ quantity: existingItem[0].quantity + (quantity || 1) })
+      .set({ quantity: (existingItem[0].quantity + (quantity || 1)) })
       .where(eq(cartItemTable.id, existingItem[0].id));
   } else {
     await db.insert(cartItemTable).values({
@@ -48,4 +48,25 @@ export async function GET() {
     .innerJoin(productsTable, eq(cartItemTable.productId, productsTable.id))
     .where(eq(cartItemTable.userId, user?.user.id));
   return NextResponse.json(cartItems);
+}
+
+export async function PATCH(req: NextRequest) {
+  const {productId, quantity} = await req.json();
+
+  const updated = await db
+  .update(cartItemTable)
+  .set({quantity})
+  .where(eq(cartItemTable.productId, productId));
+
+  return NextResponse.json(updated);
+}
+
+export async function DELETE(req: NextRequest) {
+  const {productId} = await req.json();
+
+  const deleted = await db
+  .delete(cartItemTable)
+  .where(eq(cartItemTable.productId, productId));
+
+  return NextResponse.json(deleted);
 }
