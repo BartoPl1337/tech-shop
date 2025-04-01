@@ -1,27 +1,34 @@
+import { Slash } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
 const BreadcrumbSection = () => {
   return (
-    <div>
-      <nav className="bg-gray-100 py-4 px-24">
-        <ol className="flex text-sm">
-          <li>
-            <a href="#" className="text-blue-500">
-              Podsumowanie
-            </a>
-          </li>
-          <li>
-            <span className="mx-2">/</span>
-          </li>
-          <li>
-            <a href="#" className="text-blue-500">
-              Dostawa
-            </a>
-          </li>
-          <li>
-            <span>Płatność</span>
-          </li>
-        </ol>
-      </nav>
-    </div>
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/koszyk">Podsumowanie</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <Slash />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/dostawa">Dostawa</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <Slash />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <BreadcrumbLink>Płatność</BreadcrumbLink>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 };
 export default BreadcrumbSection;

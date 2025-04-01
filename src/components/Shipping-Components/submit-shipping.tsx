@@ -38,7 +38,7 @@ const FormSchema = z.object({
   }),
 });
 
-const SubmitOrderSection = () => {
+const SubmitShipping = () => {
   const session = authClient.useSession();
   const user = session.data?.user;
 
@@ -106,9 +106,9 @@ const SubmitOrderSection = () => {
         </div>
 
         <div className="flex flex-col gap-1">
-          <Link href="/dostawa">
+          <Link href="/payment">
             <Button className="bg-green-500 hover:bg-green-700 w-full">
-              Przejdz do dostawy
+              Przejdz do płatności
             </Button>
           </Link>
           <Button variant={"outline"}>Oblicz ratę</Button>
@@ -121,4 +121,4 @@ const SubmitOrderSection = () => {
     </div>
   );
 };
-export default SubmitOrderSection;
+export default SubmitShipping;
